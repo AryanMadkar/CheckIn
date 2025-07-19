@@ -1,0 +1,843 @@
+{
+  "analytics": {
+    "average_time_per_question": 30.0,
+    "bloom_taxonomy_distribution": {
+      "analyze": 2,
+      "apply": 18,
+      "understand": 22
+    },
+    "difficulty_score": 0.5,
+    "quality_indicators": {
+      "has_bloom_levels": true,
+      "has_explanations": true,
+      "has_tags": true
+    },
+    "total_estimated_time_minutes": 21.0
+  },
+  "cached": false,
+  "metadata": {
+    "batch_count": 2,
+    "bloom_taxonomy_levels": [
+      "remember",
+      "understand",
+      "apply",
+      "analyze",
+      "evaluate",
+      "create"
+    ],
+    "difficulty": "medium",
+    "generation_time": "2025-07-19T02:42:27.558516",
+    "model_used": "gpt-4o-mini",
+    "question_types_included": [
+      "general_knowledge",
+      "quantitative_aptitude",
+      "verbal_ability",
+      "technical",
+      "logical_reasoning"
+    ],
+    "topic": "Python Programming",
+    "total_questions": 25,
+    "unique_questions": 42
+  },
+  "num_questions": 42,
+  "questions": [
+    {
+      "bloom_level": "understand",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The expression evaluates to True because the type of an empty list is indeed list.",
+      "id": 1,
+      "options": {
+        "A": "True",
+        "B": "False",
+        "C": "None",
+        "D": "Error"
+      },
+      "question": "What is the output of the following code: print(type([]) is list)?",
+      "question_type": "technical",
+      "tags": [
+        "data_types",
+        "type_checking"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "D",
+      "estimated_time_seconds": 30,
+      "explanation": "All options are valid ways to create a dictionary in Python.",
+      "id": 2,
+      "options": {
+        "A": "my_dict = dict()",
+        "B": "my_dict = {}",
+        "C": "my_dict = dict(key1='value1', key2='value2')",
+        "D": "All of the above"
+      },
+      "question": "Which of the following statements will correctly create a dictionary in Python?",
+      "question_type": "technical",
+      "tags": [
+        "data_structures",
+        "dictionaries"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "C",
+      "estimated_time_seconds": 30,
+      "explanation": "The sum function adds the numbers in the list and the starting value, resulting in 1 + 2 + 3 + 10 = 16.",
+      "id": 3,
+      "options": {
+        "A": "6",
+        "B": "10",
+        "C": "16",
+        "D": "20"
+      },
+      "question": "What will be the output of the following code: print(sum([1, 2, 3], 10))?",
+      "question_type": "quantitative_aptitude",
+      "tags": [
+        "functions",
+        "sum"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The correct syntax for handling exceptions in Python is using try and except.",
+      "id": 4,
+      "options": {
+        "A": "try: ... except: ...",
+        "B": "try: ... catch: ...",
+        "C": "try: ... handle: ...",
+        "D": "try: ... finally: ..."
+      },
+      "question": "Which of the following is a valid way to handle exceptions in Python?",
+      "question_type": "technical",
+      "tags": [
+        "error_handling",
+        "exceptions"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "'self' refers to the instance of the class, allowing access to instance variables and methods.",
+      "id": 5,
+      "options": {
+        "A": "To refer to the class itself",
+        "B": "To refer to the instance of the class",
+        "C": "To define a static method",
+        "D": "To create a class variable"
+      },
+      "question": "What is the purpose of the 'self' keyword in Python class methods?",
+      "question_type": "technical",
+      "tags": [
+        "object_oriented",
+        "classes"
+      ]
+    },
+    {
+      "bloom_level": "analyze",
+      "correct_answer": "C",
+      "estimated_time_seconds": 30,
+      "explanation": "Concatenating a string and an integer raises a TypeError in Python.",
+      "id": 6,
+      "options": {
+        "A": "Hello5",
+        "B": "Hello",
+        "C": "TypeError",
+        "D": "Hello 5"
+      },
+      "question": "What will the following code output? print('Hello' + 5)?",
+      "question_type": "technical",
+      "tags": [
+        "string_operations",
+        "type_errors"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "D",
+      "estimated_time_seconds": 30,
+      "explanation": "All listed methods can be used to add elements to a list in different ways.",
+      "id": 7,
+      "options": {
+        "A": "append()",
+        "B": "insert()",
+        "C": "extend()",
+        "D": "All of the above"
+      },
+      "question": "Which of the following methods can be used to add an element to a list in Python?",
+      "question_type": "technical",
+      "tags": [
+        "lists",
+        "list_methods"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The list comprehension squares each number in the range from 0 to 4.",
+      "id": 8,
+      "options": {
+        "A": "[0, 1, 4, 9, 16]",
+        "B": "[0, 1, 2, 3, 4]",
+        "C": "[1, 4, 9, 16, 25]",
+        "D": "[0, 1, 2, 3, 4, 5]"
+      },
+      "question": "What is the output of the following code: print([x**2 for x in range(5)])?",
+      "question_type": "technical",
+      "tags": [
+        "list_comprehensions",
+        "loops"
+      ]
+    },
+    {
+      "bloom_level": "analyze",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "Option B uses square brackets instead of parentheses, which is invalid syntax for function definitions.",
+      "id": 9,
+      "options": {
+        "A": "def my_function():",
+        "B": "def my_function[]:",
+        "C": "def my_function(): pass",
+        "D": "def my_function(param):"
+      },
+      "question": "Which of the following is NOT a valid way to define a function in Python?",
+      "question_type": "technical",
+      "tags": [
+        "functions",
+        "syntax"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The string 'abc' is repeated three times, resulting in 'abcabcabc'.",
+      "id": 10,
+      "options": {
+        "A": "abcabcabc",
+        "B": "abc abc abc",
+        "C": "abc3",
+        "D": "Error"
+      },
+      "question": "What will be the output of the following code: print('abc' * 3)?",
+      "question_type": "technical",
+      "tags": [
+        "string_operations",
+        "repetition"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "The length of the string 'Hello, World!' is 13 characters including spaces and punctuation.",
+      "id": 11,
+      "options": {
+        "A": "12",
+        "B": "13",
+        "C": "14",
+        "D": "15"
+      },
+      "question": "What is the result of the expression: len('Hello, World!')?",
+      "question_type": "quantitative_aptitude",
+      "tags": [
+        "string_length",
+        "functions"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "Python lists are mutable and can contain elements of different data types.",
+      "id": 12,
+      "options": {
+        "A": "Lists are immutable.",
+        "B": "Lists can contain elements of different data types.",
+        "C": "Lists cannot be nested.",
+        "D": "Lists are fixed in size."
+      },
+      "question": "Which of the following statements about Python lists is true?",
+      "question_type": "general_knowledge",
+      "tags": [
+        "data_structures",
+        "lists"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The replace method substitutes 'l' with 'p', resulting in 'Heppo'.",
+      "id": 13,
+      "options": {
+        "A": "Heppo",
+        "B": "Hepplo",
+        "C": "Hello",
+        "D": "Error"
+      },
+      "question": "What will be the output of the following code: print('Hello'.replace('l', 'p'))?",
+      "question_type": "technical",
+      "tags": [
+        "string_methods",
+        "replace"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "The expression repeats the string '2' three times, resulting in '222'.",
+      "id": 14,
+      "options": {
+        "A": "6",
+        "B": "222",
+        "C": "Error",
+        "D": "3*2"
+      },
+      "question": "What is the output of the following code: print(3 * '2')?",
+      "question_type": "technical",
+      "tags": [
+        "string_operations",
+        "multiplication"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The correct mode for reading a file is 'r'. Option D is also correct for reading in binary mode.",
+      "id": 15,
+      "options": {
+        "A": "open('file.txt', 'r')",
+        "B": "open('file.txt', 'write')",
+        "C": "open('file.txt', 'read')",
+        "D": "open('file.txt', 'rb')"
+      },
+      "question": "Which of the following is a correct way to open a file in Python?",
+      "question_type": "technical",
+      "tags": [
+        "file_handling",
+        "file_operations"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "Negative indexing retrieves the last character of the string, which is 'n'.",
+      "id": 16,
+      "options": {
+        "A": "P",
+        "B": "n",
+        "C": "Error",
+        "D": "python"
+      },
+      "question": "What will be the output of the following code: print('Python'[-1])?",
+      "question_type": "technical",
+      "tags": [
+        "string_indexing",
+        "negative_indexing"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The '+' operator concatenates two lists, resulting in a single list with all elements.",
+      "id": 17,
+      "options": {
+        "A": "[1, 2, 3, 4, 5, 6]",
+        "B": "[1, 2, 3][4, 5, 6]",
+        "C": "[1, 2, 3, [4, 5, 6]]",
+        "D": "Error"
+      },
+      "question": "What is the output of the following code: print([1, 2, 3] + [4, 5, 6])?",
+      "question_type": "technical",
+      "tags": [
+        "list_operations",
+        "concatenation"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "Option A correctly defines a lambda function that takes one argument and returns its value incremented by 1.",
+      "id": 18,
+      "options": {
+        "A": "lambda x: x + 1",
+        "B": "def lambda x: x + 1",
+        "C": "lambda: x + 1",
+        "D": "lambda x, y: return x + y"
+      },
+      "question": "Which of the following is a correct way to define a lambda function in Python?",
+      "question_type": "technical",
+      "tags": [
+        "functions",
+        "lambda"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The capitalize method converts the first character of the string to uppercase.",
+      "id": 19,
+      "options": {
+        "A": "Abc",
+        "B": "abc",
+        "C": "ABC",
+        "D": "Error"
+      },
+      "question": "What will be the output of the following code: print('abc'.capitalize())?",
+      "question_type": "technical",
+      "tags": [
+        "string_methods",
+        "capitalize"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "Tuples are immutable but can contain duplicate elements and can be nested.",
+      "id": 20,
+      "options": {
+        "A": "Tuples are mutable.",
+        "B": "Tuples can contain duplicate elements.",
+        "C": "Tuples cannot be nested.",
+        "D": "Tuples are defined using square brackets."
+      },
+      "question": "Which of the following statements about Python tuples is true?",
+      "question_type": "general_knowledge",
+      "tags": [
+        "data_structures",
+        "tuples"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The find method returns the index of the first occurrence of 'l', which is at index 2.",
+      "id": 21,
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "1",
+        "D": "-1"
+      },
+      "question": "What will be the output of the following code: print('Hello'.find('l'))?",
+      "question_type": "technical",
+      "tags": [
+        "string_methods",
+        "find"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "String comparison is case-sensitive, so 'abc' is not equal to 'ABC'.",
+      "id": 22,
+      "options": {
+        "A": "True",
+        "B": "False",
+        "C": "None",
+        "D": "Error"
+      },
+      "question": "What is the output of the following code: print('abc' == 'ABC')?",
+      "question_type": "technical",
+      "tags": [
+        "string_comparison",
+        "equality"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "D",
+      "estimated_time_seconds": 30,
+      "explanation": "All options are valid ways to create a set in Python.",
+      "id": 23,
+      "options": {
+        "A": "my_set = set([1, 2, 3])",
+        "B": "my_set = {1, 2, 3}",
+        "C": "my_set = set((1, 2, 3))",
+        "D": "All of the above"
+      },
+      "question": "Which of the following is a valid way to create a set in Python?",
+      "question_type": "technical",
+      "tags": [
+        "data_structures",
+        "sets"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The '*' operator repeats the list, resulting in [1, 2, 3, 1, 2, 3].",
+      "id": 24,
+      "options": {
+        "A": "[1, 2, 3, 1, 2, 3]",
+        "B": "[2, 4, 6]",
+        "C": "[1, 2, 3, 2, 4, 6]",
+        "D": "Error"
+      },
+      "question": "What will be the output of the following code: print([1, 2, 3] * 2)?",
+      "question_type": "technical",
+      "tags": [
+        "list_operations",
+        "repetition"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "'with' is used to wrap the execution of a block with methods defined by a context manager, simplifying file handling.",
+      "id": 25,
+      "options": {
+        "A": "It is used for exception handling.",
+        "B": "It simplifies file handling.",
+        "C": "It is used for defining functions.",
+        "D": "It is a way to create a class."
+      },
+      "question": "Which of the following statements about Python's 'with' statement is true?",
+      "question_type": "general_knowledge",
+      "tags": [
+        "context_managers",
+        "file_handling"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "Option A correctly uses the dictionary literal syntax in Python.",
+      "id": 2,
+      "options": {
+        "A": "my_dict = {1: 'one', 2: 'two'}",
+        "B": "my_dict = dict(1='one', 2='two')",
+        "C": "my_dict = [1: 'one', 2: 'two']",
+        "D": "my_dict = (1: 'one', 2: 'two')"
+      },
+      "question": "Which of the following statements correctly creates a dictionary in Python?",
+      "question_type": "technical",
+      "tags": [
+        "dictionaries",
+        "data_structures"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "You cannot concatenate a string and an integer directly in Python, which raises a TypeError.",
+      "id": 3,
+      "options": {
+        "A": "Hello5",
+        "B": "Error",
+        "C": "Hello",
+        "D": "None"
+      },
+      "question": "What will be the output of the following code: print('Hello' + 5)?",
+      "question_type": "technical",
+      "tags": [
+        "string_operations",
+        "type_errors"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "'self' is used to refer to the instance of the class, allowing access to its attributes and methods.",
+      "id": 5,
+      "options": {
+        "A": "To refer to the class itself",
+        "B": "To refer to the instance of the class",
+        "C": "To refer to the parent class",
+        "D": "To refer to the module"
+      },
+      "question": "What is the purpose of the 'self' parameter in Python class methods?",
+      "question_type": "technical",
+      "tags": [
+        "object_oriented",
+        "classes"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "C",
+      "estimated_time_seconds": 30,
+      "explanation": "The 'with' statement is used for resource management, particularly for file handling, ensuring proper acquisition and release of resources.",
+      "id": 8,
+      "options": {
+        "A": "It creates a new scope",
+        "B": "It handles exceptions",
+        "C": "It simplifies file handling",
+        "D": "It defines a function"
+      },
+      "question": "In Python, what does the 'with' statement do?",
+      "question_type": "technical",
+      "tags": [
+        "context_managers",
+        "file_handling"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "Sets in Python automatically remove duplicate elements, so the output will be {1, 2, 3}.",
+      "id": 9,
+      "options": {
+        "A": "{1, 2, 3}",
+        "B": "{1, 2, 2, 3}",
+        "C": "Error",
+        "D": "None"
+      },
+      "question": "What is the output of the following code: print({1, 2, 2, 3})?",
+      "question_type": "technical",
+      "tags": [
+        "sets",
+        "data_structures"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The 'upper()' method converts all characters in the string to uppercase.",
+      "id": 11,
+      "options": {
+        "A": "ABC",
+        "B": "abc",
+        "C": "Abc",
+        "D": "Error"
+      },
+      "question": "What will be the output of the following code: print('abc'.upper())?",
+      "question_type": "technical",
+      "tags": [
+        "strings",
+        "methods"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The correct syntax for handling exceptions in Python is using 'try' followed by 'except'.",
+      "id": 12,
+      "options": {
+        "A": "try: ... except: ...",
+        "B": "catch: ... try: ...",
+        "C": "try: ... handle: ...",
+        "D": "except: ... try: ..."
+      },
+      "question": "Which of the following is a correct way to handle exceptions in Python?",
+      "question_type": "technical",
+      "tags": [
+        "exceptions",
+        "error_handling"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The sum function adds all the elements in the list, resulting in 10.",
+      "id": 13,
+      "options": {
+        "A": "10",
+        "B": "9",
+        "C": "6",
+        "D": "12"
+      },
+      "question": "What is the output of the following code: print(sum([1, 2, 3, 4]))?",
+      "question_type": "quantitative_aptitude",
+      "tags": [
+        "functions",
+        "summing"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "The pop method removes the element at index 1 (which is 2), resulting in [1, 3, 4].",
+      "id": 14,
+      "options": {
+        "A": "[1, 2, 3]",
+        "B": "[1, 3, 4]",
+        "C": "[2, 3, 4]",
+        "D": "[1, 2, 4]"
+      },
+      "question": "If a list contains the elements [1, 2, 3, 4] and you execute list.pop(1), what will the list contain afterward?",
+      "question_type": "technical",
+      "tags": [
+        "lists",
+        "methods"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The slicing syntax with a step of -1 reverses the string.",
+      "id": 15,
+      "options": {
+        "A": "nohtyP",
+        "B": "Python",
+        "C": "Pytho",
+        "D": "Error"
+      },
+      "question": "What will be the output of the following code: print('Python'[::-1])?",
+      "question_type": "technical",
+      "tags": [
+        "strings",
+        "slicing"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "The len function counts all characters in the string, including the space, resulting in 11.",
+      "id": 17,
+      "options": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "question": "What is the output of the following code: print(len('Hello World'))?",
+      "question_type": "quantitative_aptitude",
+      "tags": [
+        "strings",
+        "length"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "'in' checks for membership in a string, and 'a' is indeed in 'banana'.",
+      "id": 18,
+      "options": {
+        "A": "True",
+        "B": "False",
+        "C": "None",
+        "D": "Error"
+      },
+      "question": "What will be the output of the following code: print('a' in 'banana')?",
+      "question_type": "technical",
+      "tags": [
+        "strings",
+        "membership"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "B",
+      "estimated_time_seconds": 30,
+      "explanation": "The '**' operator is used for exponentiation, so 3 raised to the power of 2 is 9.",
+      "id": 21,
+      "options": {
+        "A": "6",
+        "B": "9",
+        "C": "8",
+        "D": "12"
+      },
+      "question": "What is the output of the following code: print(3 ** 2)?",
+      "question_type": "quantitative_aptitude",
+      "tags": [
+        "operators",
+        "exponentiation"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The correct syntax to import a module in Python is 'import module_name'.",
+      "id": 22,
+      "options": {
+        "A": "import module_name",
+        "B": "include module_name",
+        "C": "require module_name",
+        "D": "using module_name"
+      },
+      "question": "Which of the following is a correct way to import a module in Python?",
+      "question_type": "technical",
+      "tags": [
+        "modules",
+        "importing"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The 'find()' method returns the index of the first occurrence of 'b', which is 1.",
+      "id": 23,
+      "options": {
+        "A": "1",
+        "B": "0",
+        "C": "2",
+        "D": "-1"
+      },
+      "question": "What will be the output of the following code: print('abc'.find('b'))?",
+      "question_type": "technical",
+      "tags": [
+        "strings",
+        "methods"
+      ]
+    },
+    {
+      "bloom_level": "understand",
+      "correct_answer": "C",
+      "estimated_time_seconds": 30,
+      "explanation": "The range function generates a sequence of numbers that is zero-indexed.",
+      "id": 24,
+      "options": {
+        "A": "range() generates a list of numbers.",
+        "B": "range() can only take one argument.",
+        "C": "range() is zero-indexed.",
+        "D": "range() can generate negative numbers."
+      },
+      "question": "Which of the following statements about Python's range function is true?",
+      "question_type": "general_knowledge",
+      "tags": [
+        "range",
+        "loops"
+      ]
+    },
+    {
+      "bloom_level": "apply",
+      "correct_answer": "A",
+      "estimated_time_seconds": 30,
+      "explanation": "The list comprehension generates a list of numbers from 0 to 4, which is [0, 1, 2, 3, 4].",
+      "id": 25,
+      "options": {
+        "A": "[0, 1, 2, 3, 4]",
+        "B": "[1, 2, 3, 4, 5]",
+        "C": "[0, 1, 2, 3, 5]",
+        "D": "[1, 2, 3, 4]"
+      },
+      "question": "What will be the output of the following code: print([x for x in range(5)])?",
+      "question_type": "technical",
+      "tags": [
+        "list_comprehensions",
+        "loops"
+      ]
+    }
+  ]
+}
