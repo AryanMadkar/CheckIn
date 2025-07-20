@@ -51,7 +51,7 @@ app.use("/api/qr", qrRoutes);
 cron.schedule("0 0 * * *", async () => {
   console.log("[CRON] Running Daily QR Code Generation");
   try {
-    await qrScheduler.generateDailyQRCodes();
+    await qrScheduler.generateTimedQRCodes()();
   } catch (error) {
     console.error("Cron job error:", error);
   }

@@ -21,3 +21,9 @@ exports.qrScanValidation = [
   body("location.longitude").isFloat(),
   body("type").isIn(["check-in", "check-out"]),
 ];
+
+exports.generateQRValidation = [
+  body("qrType")
+    .isIn(["check-in", "check-out"])
+    .withMessage("qrType must be either 'check-in' or 'check-out'")
+];

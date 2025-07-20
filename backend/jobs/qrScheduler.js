@@ -3,60 +3,6 @@ const QRCode = require("../models/QRCode");
 const qrGenerator = require("../utils/qrGenerator");
 
 const qrScheduler = {
-  generateDailyQRCodes: async () => {
-    try {
-      console.log("Starting daily QR code generation...");
-
-      const organizations = await Organization.find({
-        isActive: true,
-      });
-
-      for (const org of organizations) {
-        // Deactivate existing QR codes
-        await QRCode.updateMany(
-          {
-            organizationId: org._id,
-            active: true,
-          },
-          {
-            active: false,
-          }
-        );
-
-        const { code, qrCodeImage } = await qrGenerator.generateQRCode(
-          org._id,
-          org.location,
-          org.settings.qrCodeValidityMinutes
-        );
-
-        // Calculate validity period
-        const now = new Date();
-        const validFrom = new Date(now.getTime());
-        const validUntil = new Date(
-          now.getTime() + org.settings.qrCodeValidityMinutes * 60 * 1000
-        );
-
-        // Save to database
-        const qrCodeDoc = new QRCode({
-          organizationId: org._id,
-          code,
-          validFrom,
-          validUntil,
-          location: org.location,
-          qrImageData: qrCodeImage,
-          active: true,
-        });
-
-        await qrCodeDoc.save();
-        console.log(`Generated QR code for organization: ${org.name}`);
-      }
-
-      console.log("Daily QR code generation completed");
-    } catch (error) {
-      console.error("QR code generation job error:", error);
-    }
-  },
-
   // ✅ FIXED: Method name typo
   generateForOrganization: async (organizationId) => {
     try {
@@ -101,6 +47,42 @@ const qrScheduler = {
     } catch (error) {
       console.error("QR code generation error:", error);
       throw error;
+    }
+  },
+  generateTimedQRCodes: async () => {
+    const organizations = await Organization.find({ isActive: true });
+
+    for (const org of organizations) {
+      const types = ["check-in", "check-out"];
+      for (const type of types) {
+        // Deactivate old QR codes of this type
+        await QRCode.updateMany(
+          { organizationId: org._id, qrType: type, active: true },
+          { active: false }
+        );
+
+        const { code, qrCodeImage } = await qrGenerator.generateQRCode(
+          org._id,
+          org.location,
+          org.settings.qrCodeValidityMinutes
+        );
+
+        const now = new Date();
+        const validUntil = new Date(
+          now.getTime() + org.settings.qrCodeValidityMinutes * 60 * 1000
+        );
+
+        await QRCode.create({
+          organizationId: org._id,
+          code,
+          validFrom: now,
+          validUntil,
+          location: org.location,
+          qrImageData: qrCodeImage,
+          active: true,
+          qrType: type,
+        });
+      }
     }
   },
 };

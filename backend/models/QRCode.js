@@ -12,6 +12,11 @@ const qrCodeSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    qrType: {
+      type: String,
+      enum: ["check-in", "check-out"],
+      required: true,
+    },
     validFrom: {
       type: Date,
       required: true,
@@ -48,4 +53,4 @@ const qrCodeSchema = new mongoose.Schema(
 qrCodeSchema.index({ organizationId: 1, validFrom: 1, validUntil: 1 });
 qrCodeSchema.index({ code: 1, active: 1 });
 
-module.exports = mongoose.model('QRCode', qrCodeSchema);
+module.exports = mongoose.model("QRCode", qrCodeSchema);

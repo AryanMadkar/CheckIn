@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .token-info {
+            background-color: #e2e3e5;
+            padding: 10px;
+            border-radius: 4px;
+            word-break: break-all;
+            font-size: 12px;
+            margin: 10px 0;
+        }
+        .response {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 Attendance System API Tester</h1>
+    
+    <!-- Authentication Status -->
+    <div class="container">
+        <h2>Authentication Status</h2>
+        <div id="authStatus" class="error">Not Authenticated</div>
+        <div id="tokenInfo" class="token-info hidden"></div>
+        <button onclick="checkAuthStatus()">Check Auth Status</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Login Form -->
+    <div class="container">
+        <h2>🔐 Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" value="admin@test.com" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" value="password123" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div id="loginResponse" class="response hidden"></div>
+    </div>
+
+    <!-- QR Code Attendance Scanner -->
+    <div class="container">
+        <h2>📱 QR Code Attendance Scanner</h2>
+        <form id="scanForm">
+            <div class="form-group">
+                <label for="qrCode">QR Code:</label>
+                <input type="text" id="qrCode" placeholder="687c4841431035a9b9bf8c4e_1752976313668_e37025ffbc510db19c6cb760b47ce4af" required>
+            </div>
+            <div class="form-group">
+                <label for="attendanceType">Attendance Type:</label>
+                <select id="attendanceType" required>
+                    <option value="check-in">Check In</option>
+                    <option value="check-out">Check Out</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="latitude">Latitude:</label>
+                <input type="number" id="latitude" step="any" value="18.516726" required>
+            </div>
+            <div class="form-group">
+                <label for="longitude">Longitude:</label>
+                <input type="number" id="longitude" step="any" value="73.856255" required>
+            </div>
+            <div class="form-group">
+                <label for="accuracy">GPS Accuracy (meters):</label>
+                <input type="number" id="accuracy" value="15">
+            </div>
+            <div class="form-group">
+                <label for="deviceId">Device ID:</label>
+                <input type="text" id="deviceId" value="device-xyz-123">
+            </div>
+            <button type="submit">📍 Scan QR & Record Attendance</button>
+        </form>
+        <div id="scanResponse" class="response hidden"></div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="container">
+        <h2>⚡ Quick Actions</h2>
+        <button onclick="getCurrentLocation()">🌍 Get Current Location</button>
+        <button onclick="getAttendanceRecords()">📋 Get Attendance Records</button>
+        <button onclick="getActiveQR('check-in')">🔄 Get Active Check-In QR</button>
+        <button onclick="getActiveQR('check-out')">🔄 Get Active Check-Out QR</button>
+        <div id="quickActionsResponse" class="response hidden"></div>
+    </div>
+
+    <!-- User Registration (for testing) -->
+    <div class="container">
+        <h2>👤 Register New User</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="regEmail">Email:</label>
+                <input type="email" id="regEmail" value="testuser@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Password:</label>
+                <input type="password" id="regPassword" value="password123" required>
+            </div>
+            <div class="form-group">
+                <label for="regName">Name:</label>
+                <input type="text" id="regName" value="Test User" required>
+            </div>
+            <div class="form-group">
+                <label for="orgCode">Organization Code:</label>
+                <input type="text" id="orgCode" placeholder="Organization ID or Name" required>
+            </div>
+            <button type="submit">Register User</button>
+        </form>
+        <div id="registerResponse" class="response hidden"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5000/api';
+        let accessToken = localStorage.getItem('accessToken');
+
+        // Utility Functions
+        function showResponse(elementId, data, isError = false) {
+            const element = document.getElementById(elementId);
+            element.className = `response ${isError ? 'error' : 'success'}`;
+            element.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            element.classList.remove('hidden');
+        }
+
+        function updateAuthStatus() {
+            const authStatus = document.getElementById('authStatus');
+            const tokenInfo = document.getElementById('tokenInfo');
+            
+            if (accessToken) {
+                authStatus.textContent = '✅ Authenticated';
+                authStatus.className = 'success';
+                tokenInfo.textContent = `Token: ${accessToken.substring(0, 50)}...`;
+                tokenInfo.classList.remove('hidden');
+            } else {
+                authStatus.textContent = '❌ Not Authenticated';
+                authStatus.className = 'error';
+                tokenInfo.classList.add('hidden');
+            }
+        }
+
+        async function makeRequest(endpoint, options = {}) {
+            const url = `${API_BASE}${endpoint}`;
+            const defaultOptions = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(accessToken && { Authorization: `Bearer ${accessToken}` })
+                },
+                credentials: 'include'
+            };
+
+            try {
+                const response = await fetch(url, { ...defaultOptions, ...options });
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${data.message || 'Request failed'}`);
+                }
+                
+                return { success: true, data };
+            } catch (error) {
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Authentication Functions
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const result = await makeRequest('/auth/login', {
+                method: 'POST',
+                body: JSON.stringify({ email, password })
+            });
+
+            if (result.success) {
+                accessToken = result.data.accessToken;
+                localStorage.setItem('accessToken', accessToken);
+                updateAuthStatus();
+                showResponse('loginResponse', result.data);
+            } else {
+                showResponse('loginResponse', { error: result.error }, true);
+            }
+        });
+
+        // QR Code Scanner
+        document.getElementById('scanForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const scanData = {
+                code: document.getElementById('qrCode').value,
+                type: document.getElementById('attendanceType').value,
+                location: {
+                    latitude: parseFloat(document.getElementById('latitude').value),
+                    longitude: parseFloat(document.getElementById('longitude').value),
+                    accuracy: parseInt(document.getElementById('accuracy').value)
+                },
+                deviceInfo: {
+                    deviceId: document.getElementById('deviceId').value,
+                    platform: 'web-tester',
+                    userAgent: navigator.userAgent,
+                    ipAddress: '192.168.1.100',
+                    isMockLocation: false
+                }
+            };
+
+            const result = await makeRequest('/attendance/scan', {
+                method: 'POST',
+                body: JSON.stringify(scanData)
+            });
+
+            if (result.success) {
+                showResponse('scanResponse', result.data);
+            } else {
+                showResponse('scanResponse', { error: result.error }, true);
+            }
+        });
+
+        // Quick Actions
+        async function getCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const coords = position.coords;
+                        document.getElementById('latitude').value = coords.latitude;
+                        document.getElementById('longitude').value = coords.longitude;
+                        document.getElementById('accuracy').value = Math.round(coords.accuracy);
+                        showResponse('quickActionsResponse', {
+                            message: 'Location updated successfully',
+                            coordinates: {
+                                latitude: coords.latitude,
+                                longitude: coords.longitude,
+                                accuracy: coords.accuracy
+                            }
+                        });
+                    },
+                    (error) => {
+                        showResponse('quickActionsResponse', { 
+                            error: `Geolocation error: ${error.message}` 
+                        }, true);
+                    }
+                );
+            } else {
+                showResponse('quickActionsResponse', { 
+                    error: 'Geolocation not supported by browser' 
+                }, true);
+            }
+        }
+
+        async function getAttendanceRecords() {
+            const result = await makeRequest('/attendance/records?page=1&limit=10');
+            if (result.success) {
+                showResponse('quickActionsResponse', result.data);
+            } else {
+                showResponse('quickActionsResponse', { error: result.error }, true);
+            }
+        }
+
+        async function getActiveQR(type) {
+            const result = await makeRequest(`/qr/active?qrType=${type}`);
+            if (result.success) {
+                // Auto-populate QR code field
+                document.getElementById('qrCode').value = result.data.code;
+                document.getElementById('attendanceType').value = type;
+                showResponse('quickActionsResponse', result.data);
+            } else {
+                showResponse('quickActionsResponse', { error: result.error }, true);
+            }
+        }
+
+        // User Registration
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const userData = {
+                email: document.getElementById('regEmail').value,
+                password: document.getElementById('regPassword').value,
+                name: document.getElementById('regName').value,
+                organizationCode: document.getElementById('orgCode').value
+            };
+
+            const result = await makeRequest('/auth/register-user', {
+                method: 'POST',
+                body: JSON.stringify(userData)
+            });
+
+            if (result.success) {
+                showResponse('registerResponse', result.data);
+            } else {
+                showResponse('registerResponse', { error: result.error }, true);
+            }
+        });
+
+        function checkAuthStatus() {
+            updateAuthStatus();
+        }
+
+        async function logout() {
+            const result = await makeRequest('/auth/logout', { method: 'POST' });
+            accessToken = null;
+            localStorage.removeItem('accessToken');
+            updateAuthStatus();
+            showResponse('loginResponse', { message: 'Logged out successfully' });
+        }
+
+        // Initialize
+        updateAuthStatus();
+        
+        // Auto-refresh token every 10 minutes
+        setInterval(async () => {
+            if (accessToken) {
+                const result = await makeRequest('/auth/refresh', { method: 'POST' });
+                if (result.success) {
+                    accessToken = result.data.accessToken;
+                    localStorage.setItem('accessToken', accessToken);
+                    console.log('Token refreshed automatically');
+                }
+            }
+        }, 10 * 60 * 1000); // 10 minutes
+    </script>
+</body>
+</html>
