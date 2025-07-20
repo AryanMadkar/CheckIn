@@ -1,0 +1,40 @@
+/* src/index.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-dark-bg text-white min-h-screen;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(191, 0, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 0, 128, 0.05) 0%, transparent 50%);
+  }
+}
+
+@layer components {
+  .neon-border {
+    @apply border border-neon-blue/50 shadow-lg;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3), inset 0 0 10px rgba(0, 255, 255, 0.1);
+  }
+  
+  .neon-button {
+    @apply bg-gradient-to-r from-neon-purple/20 to-neon-blue/20 border border-neon-blue/50 text-neon-blue font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg;
+  }
+  
+  .neon-button:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    @apply border-neon-blue text-white;
+  }
+  
+  .glass-card {
+    @apply bg-dark-surface/80 backdrop-blur-md border border-dark-border/50 rounded-xl;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.6));
+  }
+}
