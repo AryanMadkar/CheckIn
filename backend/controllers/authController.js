@@ -230,6 +230,59 @@ const authController = {
     }
   },
 
+  getUserProfile: async (req, res) => {
+    try {
+      const user = await User.findById(req.user._id)
+        .populate("organizationId")
+        .select("-password -refreshToken");
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      const response = {
+        ...user.toObject(),
+        organization: user.organizationId || null,
+      };
+
+      res.json(response);
+    } catch (error) {
+      console.error("Get user profile error:", error);
+      res.status(500).json({ message: "Failed to fetch user profile" });
+    }
+  },
+
+  updateUserProfile: async (req, res) => {
+    try {
+      const { name, workingHours } = req.body;
+
+      const user = await User.findByIdAndUpdate(
+        req.user._id,
+        {
+          name,
+          workingHours,
+        },
+        { new: true }
+      )
+        .populate("organizationId")
+        .select("-password -refreshToken");
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      const response = {
+        ...user.toObject(),
+        organization: user.organizationId || null,
+      };
+
+      res.json(response);
+    } catch (error) {
+      console.error("Update user profile error:", error);
+      res.status(500).json({ message: "Failed to update user profile" });
+    }
+  },
+
   logout: async (req, res) => {
     try {
       res.clearCookie("refreshToken");
